@@ -12,12 +12,13 @@ import androidx.navigation.compose.rememberNavController
 import com.example.notesapp.Auth.LoginScreen
 import com.example.notesapp.Auth.SignupScreen
 import com.example.notesapp.Auth.TextFieldViewModel
+import com.example.notesapp.Notes.Presentation.NotesScreen
 
 @Composable
 fun Navigation(
     loginTextFieldViewModel: TextFieldViewModel = TextFieldViewModel(),
     signupTextFieldViewModel: TextFieldViewModel = TextFieldViewModel(),
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController = rememberNavController(),
 ) {
     NavHost(
         navController = navController,
@@ -32,5 +33,8 @@ fun Navigation(
         composable(Screen.SignupScreen.route) {
             SignupScreen(textFieldViewModel = signupTextFieldViewModel, navController)
         }
+//        composable(Screen.NotesScreen.route) {
+//            NotesScreen(textFieldViewModel = signupTextFieldViewModel, navController)
+//        }
     }
 }
