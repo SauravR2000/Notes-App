@@ -15,19 +15,22 @@ import com.example.notesapp.Auth.TextFieldViewModel
 
 @Composable
 fun Navigation(
-    textFieldViewModel: TextFieldViewModel = viewModel(),
+    loginTextFieldViewModel: TextFieldViewModel = TextFieldViewModel(),
+    signupTextFieldViewModel: TextFieldViewModel = TextFieldViewModel(),
     navController: NavHostController = rememberNavController()
 ) {
     NavHost(
         navController = navController,
         startDestination = Screen.LoginScreen.route,
-        modifier = Modifier.navigationBarsPadding().statusBarsPadding()
+        modifier = Modifier
+            .navigationBarsPadding()
+            .statusBarsPadding()
     ) {
         composable(Screen.LoginScreen.route) {
-            LoginScreen(textFieldViewModel = textFieldViewModel, navController)
+            LoginScreen(textFieldViewModel = loginTextFieldViewModel, navController)
         }
         composable(Screen.SignupScreen.route) {
-            SignupScreen(textFieldViewModel = textFieldViewModel, navController)
+            SignupScreen(textFieldViewModel = signupTextFieldViewModel, navController)
         }
     }
 }

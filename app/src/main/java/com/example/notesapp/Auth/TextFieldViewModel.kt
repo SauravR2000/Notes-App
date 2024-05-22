@@ -25,6 +25,15 @@ class TextFieldViewModel : ViewModel() {
         passwordValue = value
     }
 
+    var userNameValue by mutableStateOf("")
+        private set
+    var userNameError by mutableStateOf("")
+        private set
+
+    fun setUserName(value: String) {
+        userNameValue = value
+    }
+
     private fun validateEmail(): Boolean {
         val email = emailValue.trim()
         var isValid = true
@@ -56,8 +65,29 @@ class TextFieldViewModel : ViewModel() {
         return isValid
     }
 
-    fun validateForm(): Boolean {
+    private fun validateUserName(): Boolean {
+        val userName = userNameValue.trim()
+        var isValid = true
+        var errorMessage = ""
+
+        if (userName.isBlank() || userName.isEmpty()) {
+            errorMessage = "Please fill user name field"
+            isValid = false
+        }
+
+        return isValid
+    }
+
+    fun validateLoginForm(): Boolean {
         if (validateEmail() && validatePassword()) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    fun validateSignupForm(): Boolean {
+        if (validateEmail() && validatePassword() && validateUserName()) {
             return true
         } else {
             return false

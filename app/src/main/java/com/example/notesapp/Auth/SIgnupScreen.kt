@@ -8,9 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -68,13 +66,13 @@ fun SignupScreen(
                 Text(text = "Signup", style = MaterialTheme.typography.headlineMedium)
                 Space20()
                 TextFieldValidation(
-                    value = textFieldViewModel.emailValue,
+                    value = textFieldViewModel.userNameValue,
                     placeholder = "User Name",
-                    onChange = textFieldViewModel::setEmail,
-                    isError = textFieldViewModel.emailError.isNotEmpty(),
+                    onChange = textFieldViewModel::setUserName,
+                    isError = textFieldViewModel.userNameError.isNotEmpty(),
                     icon = Icons.Rounded.Person,
-                    errorMessage = textFieldViewModel.emailError,
-                    keyboardType = KeyboardType.Email,
+                    errorMessage = textFieldViewModel.userNameError,
+                    keyboardType = KeyboardType.Text,
                     modifier = Modifier
 
                 )
@@ -106,7 +104,7 @@ fun SignupScreen(
                 Button(
                     onClick = {
                         focusManager.clearFocus()
-                        if (textFieldViewModel.validateForm()) {
+                        if (textFieldViewModel.validateLoginForm()) {
                             navController.navigate(Screen.SignupScreen.route)
                         }
                     },

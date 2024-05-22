@@ -110,7 +110,8 @@ fun LoginScreen(
                 Button(
                     onClick = {
                         focusManager.clearFocus()
-                        if (textFieldViewModel.validateForm()) {
+                        if (textFieldViewModel.validateLoginForm()) {
+                            navController.navigate(Screen.SignupScreen.route)
                         }
                     },
                     modifier = Modifier
